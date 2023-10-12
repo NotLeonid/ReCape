@@ -1,1 +1,2 @@
 start electron .
+exit

@@ -11,7 +11,11 @@ var skins=path.join(os.homedir(),"AppData","Roaming",".minecraft","assets","skin
 
 oldPreview.src=`${skins}\\${name.value.substring(0,2)}\\${name.value}?${new Date().getTime()}`;
 name.addEventListener("change",e=>{
+if(fs.existsSync(`${skins}\\${name.value.substring(0,2)}\\${name.value}`)){
 oldPreview.src=`${skins}\\${name.value.substring(0,2)}\\${name.value}?${new Date().getTime()}`;
+}else{
+oldPreview.src=`default_capes/${name.value}`;
+}
 });
 file.addEventListener("change",e=>{
 newPreview.src=`${file.files[0].path}?${new Date().getTime()}`;
@@ -22,7 +26,11 @@ oldPreview.src=`${skins}\\${name.value.substring(0,2)}\\${name.value}?${new Date
 });
 document.querySelector("#reset").addEventListener("dblclick",async e=>{
 await fs.unlinkSync(`${skins}\\${name.value.substring(0,2)}\\${name.value}`);
+if(fs.existsSync(`${skins}\\${name.value.substring(0,2)}\\${name.value}`)){
 oldPreview.src=`${skins}\\${name.value.substring(0,2)}\\${name.value}?${new Date().getTime()}`;
+}else{
+oldPreview.src=`default_capes/${name.value}`;
+}
 });
 
 document.querySelectorAll(".tab").forEach(button=>{
