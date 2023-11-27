@@ -8,6 +8,7 @@ var newPreview=document.querySelector("#new");
 var name=document.querySelector("#cape");
 var file=document.querySelector("#file");
 var skins=path.join(os.homedir(),"AppData","Roaming",".minecraft","assets","skins");
+document.querySelector("#customSkinsPath").addEventListener("click",()=>{skins=prompt("Enter custom full skins folder location path");});
 
 if(fs.existsSync(`${skins}\\${name.value.substring(0,2)}\\${name.value}`)){
 oldPreview.src=`${skins}\\${name.value.substring(0,2)}\\${name.value}?${new Date().getTime()}`;
